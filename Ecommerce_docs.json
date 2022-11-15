@@ -1,0 +1,830 @@
+{
+	"info": {
+		"_postman_id": "cd75b651-3cb7-43c7-8bc2-12fa818d513c",
+		"name": "Project-2--ECOMMERCE_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19597822"
+	},
+	"item": [
+		{
+			"name": "AUTH REQUESTS",
+			"item": [
+				{
+					"name": "REGISTER",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"// pm stans for postman\r",
+									"pm.globals.set(\"accessToken\",jsonData.token);\r",
+									"// created global variable that can be used in env."
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"user2\",\r\n    \"email\":\"user2@gmail.com\",\r\n    \"password\":\"user2@6519\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonData = pm.response.json();\r",
+									"// pm stans for postman\r",
+									"pm.globals.set(\"accessToken\",jsonData.token);\r",
+									"// created global variable that can be used in env."
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user2@gmail.com\",\r\n    \"password\":\"user2@6519\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGOUT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/auth/logout",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "USER REQUESTS",
+			"item": [
+				{
+					"name": "GET ALL USERS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Il9pZCI6IjYyZGI3OGVhMzY0YWQxNTZhMmEyMTc3OSIsIm5hbWUiOiJ1c2VyMSIsImVtYWlsIjoidXNlcjFAZ21haWwuY29tIiwicGFzc3dvcmQiOiIkMmEkMTAkcFA4Sk1XOFIwa2lDR0EuQUd0Yy5NZTVuTXdSbm40Y2IzZkx6ZEhpN1lqUDJvOVhvMDVXTi4iLCJyb2xlIjoidXNlciIsIl9fdiI6MH0sImlhdCI6MTY1ODU1NzQ2MSwiZXhwIjoxNjU4NTYxMDYxfQ.4I6xzKNYYKTDL4l1bNCh8axPdSCN_J-vP1-1kiZkv_k",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/user/getAllUsers",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"getAllUsers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET CURRENT USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/user/currentUser",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"currentUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"user1@gmail.com\",\r\n    \"name\":\"user1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/updateUser",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"updateUser"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE USER'S PASSWORD",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"user1@6517\",\r\n    \"newPassword\":\"newPassword@6519\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/user/updateUserPassword",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"updateUserPassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE USER BY ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accessToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/user/62db78a1364ad156a2a21775",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user",
+								"62db78a1364ad156a2a21775"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "PRODUCT REQUESTS",
+			"item": [
+				{
+					"name": "GET ALL PRODUCTS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/product/getAllProducts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"getAllProducts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE PRODUCT",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/product/62df3205e77082edcf10073f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"62df3205e77082edcf10073f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE PRODUCT",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"name\": \"armchair\",\r\n      \"price\": 12599,\r\n      \"image\": \"https://dl.airtable.com/.attachmentThumbnails/530c07c5ade5acd9934c8dd334458b86/cf91397f\",\r\n      \"colors\": [\"#000\", \"#00ff00\", \"#0000ff\"],\r\n      \"company\": \"marcos\",\r\n      \"description\": \"Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge\",\r\n      \"category\": \"bedroom\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/product/createProduct",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"createProduct"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE PRODUCT",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\":\"100000000\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/product/update/62df3225e77082edcf100745",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"update",
+								"62df3225e77082edcf100745"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PRODUCT",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/product/delete/62df3225e77082edcf100745",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"delete",
+								"62df3225e77082edcf100745"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD PRODUCTS IMAGE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/HARSH/Downloads/flo-ring.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3000/api/product/uploadProductImage",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"uploadProductImage"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET PRODUCT'S REVIEWS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/product/62dfd5a723d6ab4dfbc9159c/reviews",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"product",
+								"62dfd5a723d6ab4dfbc9159c",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "ORDER REQUESTS",
+			"item": [
+				{
+					"name": "GET ALL ORDERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/order/getAllOrders",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"getAllOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET CURRENT USER'S ORDERS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/order/showMyAllOrders",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"showMyAllOrders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE ORDER",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/order/62dff8d48c9fb2241ea18b9f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"62dff8d48c9fb2241ea18b9f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE ORDER",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/order/update/62dff8d48c9fb2241ea18b9f",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"update",
+								"62dff8d48c9fb2241ea18b9f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE ORDER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"tax\": 399,\r\n      \"shippingFee\": 499,\r\n      \"items\": [\r\n          {\r\n            \"prodId\":\"62df78a1785b40ac8ec010df\",\r\n            \"numOfProds\":3\r\n          },\r\n          {\r\n            \"prodId\":\"62df78ae785b40ac8ec010e2\",\r\n            \"numOfProds\":5\r\n          }\r\n      ]\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/order/createOrder",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"order",
+								"createOrder"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "REVIEWS REQUESTS",
+			"item": [
+				{
+					"name": "GET ALL REVIEWS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/review/getAllReviews",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"review",
+								"getAllReviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET SINGLE REVIEW",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/review/62dfc8505105630e2c04f5d0",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"review",
+								"62dfc8505105630e2c04f5d0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE REVIEW",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"third review\",\r\n    \"rating\":2.6,\r\n    \"comment\":\"nice product\",\r\n    \"product\":\"62e07f3ce995f1c8e7c8dc15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/review/createReview",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"review",
+								"createReview"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE REVIEW",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rating\":\"4.9\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/review/update/62e07fcde995f1c8e7c8dc2e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"review",
+								"update",
+								"62e07fcde995f1c8e7c8dc2e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE REVIEW",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/review/delete/62e07fcde995f1c8e7c8dc2e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"review",
+								"delete",
+								"62e07fcde995f1c8e7c8dc2e"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{accessToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "#EXTRA : PLAYGROUND",
+			"item": [
+				{
+					"name": "SERVER CHECK REQUEST",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/isServerOn",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"isServerOn"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
